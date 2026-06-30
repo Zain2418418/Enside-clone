@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+
+@keyframes scrollLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-scroll-right {
+  display: flex;
+  width: max-content;
+  /* 35s karne se speed zyada tez nahi hogi aur premium lagay gi */
+  animation: scrollLeftToRight 35s linear infinite; 
+}
