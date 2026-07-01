@@ -1,18 +1,123 @@
 @import "tailwindcss";
 
+/* This is for CLient logos */
 
-@keyframes scrollLeftToRight {
+@keyframes discreteSwiper {
+  0%, 12% { transform: translateX(-332px); }
+  16%, 28% { transform: translateX(-664px); }
+  32%, 44% { transform: translateX(-996px); }
+  48%, 60% { transform: translateX(-1328px); }
+  64%, 76% { transform: translateX(-1660px); }
+  80%, 92% { transform: translateX(-1992px); }
+  96%, 100% { transform: translateX(0); }
+}
+
+.animate-swiper-right {
+  display: flex;
+  width: max-content;
+  animation: discreteSwiper 16s ease-in-out infinite;
+}
+
+
+/* This is for OurCases */
+
+/* Left side entrance entry logic for Card 1 */
+@keyframes slideFromLeft {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(-150px);
+    opacity: 0;
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
-.animate-scroll-right {
-  display: flex;
-  width: max-content;
-  /* 35s karne se speed zyada tez nahi hogi aur premium lagay gi */
-  animation: scrollLeftToRight 35s linear infinite; 
+/* Bottom up entrance entry logic for Card 2 and 3 */
+@keyframes fadeFromBottomUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-left {
+  animation: slideFromLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-fade-up-1 {
+  animation: fadeFromBottomUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+}
+
+.animate-fade-up-2 {
+  animation: fadeFromBottomUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards;
+}
+
+
+/* Other Features */
+
+/* Card Flip Perspective Utility Wrapper */
+.perspective-container {
+  perspective: 1000px;
+}
+
+.card-flipper {
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group-hover-flip {
+  transform: rotateY(180deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Icon left-to-right blink shake on hover */
+@keyframes iconLeftRightBlink {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animate-hover-shake:hover .icon-box {
+  animation: iconLeftRightBlink 0.4s ease-in-out infinite;
+}
+
+
+
+/* BuildingFuture*/
+
+@keyframes slideInFromRightEdge {
+  0% {
+    transform: translateX(120px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRightEdge 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom placeholder graph wave design utility */
+.clip-wave-path {
+  clip-path: ellipse(61% 73% at 49% 79%);
+}
+.clip-cyan-wave {
+  clip-path: path('M 0 32 Q 90 -10 192 32 L 192 32 L 0 32 Z');
+  transform: scaleY(-1);
 }

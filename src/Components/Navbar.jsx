@@ -52,7 +52,6 @@ export default function Navbar() {
       {/* 2nd Container: Main Navigation (Sticky on scroll with increased height) */}
       <nav className="sticky top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-gray-100 px-6 py-8 md:px-16 transition-all duration-300">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          {/* Exact Brand Logo Image from Website */}
           <div className="flex items-center cursor-pointer">
             <img
               src="https://max-themes.net/demos/enside/classic/upload/logo-enside-8-black.png"
@@ -61,7 +60,7 @@ export default function Navbar() {
             />
           </div>
 
-          {/* Desktop Menu - Font weight reduced to match screenshot precisely */}
+          {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-10 font-medium text-[14px] tracking-widest text-gray-800">
             <a href="#about" className="hover:text-blue-600 transition-colors">
               ABOUT

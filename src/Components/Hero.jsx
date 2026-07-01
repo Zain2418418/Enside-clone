@@ -6,7 +6,6 @@ const SLIDES = [
     bgImage:
       "https://www.shutterstock.com/image-photo/woman-phone-call-talking-smile-260nw-2526834943.jpg",
     title: "Meets Technology",
-    // Added explicit semantic breaks to lock the layout onto exactly two lines
     description: (
       <>
         We help businesses to stay relevant to
@@ -90,12 +89,12 @@ export default function Hero() {
                     : "translate-y-16 opacity-0"
                 }`}
               >
-                {/* Main Heading Text - Bottom margin increased for breathing room */}
+                {/* Main Heading Text */}
                 <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold text-white tracking-tight mb-6 drop-shadow-sm">
                   {slide.title}
                 </h1>
 
-                {/* Subtitle / Description - Padding and structure match image_63dd5d.png */}
+                {/* Subtitle / Description */}
                 <p className="text-gray-200/90 text-sm sm:text-[18px] max-w-xl mx-auto mb-10 font-light tracking-wide leading-relaxed">
                   {slide.description}
                 </p>
@@ -109,7 +108,7 @@ export default function Hero() {
           </div>
         );
       })}
-{/* Left Navigation Arrow - Hidden below 375px using 'hidden min-[375px]:flex' */}
+{/* Left Navigation Arrow */}
       <button 
         onClick={prevSlide}
         className="absolute left-3 sm:left-6 md:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 hidden min-[375px]:flex items-center justify-center text-white transition-all backdrop-blur-sm group active:scale-95"
@@ -120,7 +119,7 @@ export default function Hero() {
         </svg>
       </button>
 
-      {/* Right Navigation Arrow - Hidden below 375px using 'hidden min-[375px]:flex' */}
+      {/* Right Navigation Arrow */}
       <button 
         onClick={nextSlide}
         className="absolute right-3 sm:right-6 md:right-12 lg:right-20 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 hidden min-[375px]:flex items-center justify-center text-white transition-all backdrop-blur-sm group active:scale-95"

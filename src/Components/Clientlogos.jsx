@@ -11,48 +11,43 @@ const LOGOS = [
 
 export default function ClientLogos() {
   return (
-    /* Outer container keeping a clean 1px border at the bottom */
     <div className="w-full bg-white py-14 border-b border-gray-200">
-      
-      {/* Container holding layout limits */}
-      <div className="max-w-5xl mx-auto px-6 overflow-hidden">
+      {/* 5 logos display bounding box */}
+      <div className="max-w-[1100px] mx-auto overflow-hidden px-4">
         
-        {/* Track forced to align from Left to Right with tightly controlled gap */}
         <div 
-          className="animate-scroll-right flex items-center" 
-          style={{ gap: '12px' }} 
+          className="animate-swiper-right flex items-center" 
+          style={{ gap: '12px' }}
         >
-          
           {/* Set 1 */}
           {LOGOS.map((logo) => (
             <div 
               key={`set1-${logo.id}`} 
-              /* Width and Height increased aggressively to force larger rendering */
-              className="w-[320px] h-24 flex-shrink-0 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+              className="w-[320px] h-20 flex-shrink-0 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
             >
               <img 
                 src={logo.url} 
                 alt={logo.name} 
-                className="w-full h-full object-contain pointer-events-none px-2"
+                className="w-full h-full object-contain pointer-events-none px-4"
               />
             </div>
           ))}
 
-          {/* Set 2 (Cloned loop) */}
+          {/* Set 2 */}
           {LOGOS.map((logo) => (
             <div 
               key={`set2-${logo.id}`} 
-              className="w-[320px] h-24 flex-shrink-0 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+              className="w-[320px] h-20 flex-shrink-0 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
             >
               <img 
                 src={logo.url} 
                 alt={logo.name} 
-                className="w-full h-full object-contain pointer-events-none px-2"
+                className="w-full h-full object-contain pointer-events-none px-4"
               />
             </div>
           ))}
-          
         </div>
+
       </div>
     </div>
   );
