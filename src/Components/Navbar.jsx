@@ -1,15 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+
+  // Monitor scroll to smoothly snap the navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      // Jab scroll top bar ki height (approx 45px) se zyada ho jaye
+      if (window.scrollY > 45) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="w-full font-sans antialiased bg-white">
+    <header className="w-full font-sans antialiased bg-white relative">
+      
       {/* 1st Container: Top Bar (Grey Shaded) */}
-      <div className="bg-[#f8f9fa] text-[13px] text-gray-500 px-6 py-3 md:px-16 border-b border-gray-100 hidden sm:block">
+      <div className="bg-[#f8f9fa] text-[13px] text-gray-500 px-6 py-3 md:px-16 border-b border-gray-100 hidden sm:block h-[45px]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Left Side Info */}
-
           <div className="flex items-center space-x-6 text-[#828282] text-[14px]">
             <span className="flex items-center gap-1">
               <span className="text-[14px] opacity-70">📞</span> Sales
@@ -29,28 +44,24 @@ export default function Navbar() {
               Purchase
             </a>
             <div className="flex items-center space-x-5 text-sm text-gray-400 font-normal">
-              <a href="#" className="hover:text-blue-600 transition-colors">
-                f
-              </a>
-              <a href="#" className="hover:text-blue-600 transition-colors">
-                🐦
-              </a>
-              <a href="#" className="hover:text-blue-600 transition-colors">
-                Bē
-              </a>
-              <a href="#" className="hover:text-blue-600 transition-colors">
-                🌐
-              </a>
-              <a href="#" className="hover:text-blue-600 transition-colors">
-                ℗
-              </a>
+              <a href="#" className="hover:text-blue-600 transition-colors">f</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">🐦</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">Bē</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">🌐</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">℗</a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 2nd Container: Main Navigation (Sticky on scroll with increased height) */}
-      <nav className="sticky top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-gray-100 px-6 py-8 md:px-16 transition-all duration-300">
+      {/* 2nd Container: Main Navigation - Using fixed configuration bypass hack */}
+      <nav 
+        className={`w-full bg-white/95 backdrop-blur-md border-b border-gray-100 px-6 py-8 md:px-16 transition-all duration-300 left-0 right-0 z-50 ${
+          isFixed 
+            ? "fixed top-0 shadow-[0_4px_25px_rgba(0,0,0,0.06)] py-5" // Becomes absolute fixed on scroll down + shrinks padding a bit for elegance
+            : "relative" // Acts normal when at the very top
+        }`}
+      >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center cursor-pointer">
             <img
@@ -62,32 +73,12 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-10 font-medium text-[14px] tracking-widest text-gray-800">
-            <a href="#about" className="hover:text-blue-600 transition-colors">
-              ABOUT
-            </a>
-            <a href="#cases" className="hover:text-blue-600 transition-colors">
-              CASES
-            </a>
-            <a
-              href="#testimonials"
-              className="hover:text-blue-600 transition-colors"
-            >
-              TESTIMONIALS
-            </a>
-            <a
-              href="#features"
-              className="hover:text-blue-600 transition-colors"
-            >
-              FEATURES
-            </a>
-            <a
-              href="#contact"
-              className="hover:text-blue-600 transition-colors"
-            >
-              CONTACT
-            </a>
+            <a href="#about" className="hover:text-blue-600 transition-colors">ABOUT</a>
+            <a href="#cases" className="hover:text-blue-600 transition-colors">CASES</a>
+            <a href="#testimonials" className="hover:text-blue-600 transition-colors">TESTIMONIALS</a>
+            <a href="#features" className="hover:text-blue-600 transition-colors">FEATURES</a>
+            <a href="#contact" className="hover:text-blue-600 transition-colors">CONTACT</a>
 
-            {/* Exactly Proportioned Pill Button */}
             <a
               href="#purchase"
               className="bg-[#2563eb] text-white font-bold px-9 py-3.5 rounded-full hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/10 text-[12px] tracking-widest ml-4"
@@ -96,31 +87,16 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Hamburguer Toggle Button */}
+          {/* Mobile Hamburger Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-gray-800 p-2 focus:outline-none"
           >
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -129,41 +105,11 @@ export default function Navbar() {
         {/* Mobile Sidebar Menu */}
         {isOpen && (
           <div className="lg:hidden bg-white border-t border-gray-100 flex flex-col mt-4 pt-4 space-y-4 font-medium text-[13px] tracking-wider pb-4">
-            <a
-              href="#about"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-blue-600 px-2 py-1"
-            >
-              ABOUT
-            </a>
-            <a
-              href="#cases"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-blue-600 px-2 py-1"
-            >
-              CASES
-            </a>
-            <a
-              href="#testimonials"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-blue-600 px-2 py-1"
-            >
-              TESTIMONIALS
-            </a>
-            <a
-              href="#features"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-blue-600 px-2 py-1"
-            >
-              FEATURES
-            </a>
-            <a
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-blue-600 px-2 py-1"
-            >
-              CONTACT
-            </a>
+            <a href="#about" onClick={() => setIsOpen(false)} className="text-gray-800 hover:text-blue-600 px-2 py-1">ABOUT</a>
+            <a href="#cases" onClick={() => setIsOpen(false)} className="text-gray-800 hover:text-blue-600 px-2 py-1">CASES</a>
+            <a href="#testimonials" onClick={() => setIsOpen(false)} className="text-gray-800 hover:text-blue-600 px-2 py-1">TESTIMONIALS</a>
+            <a href="#features" onClick={() => setIsOpen(false)} className="text-gray-800 hover:text-blue-600 px-2 py-1">FEATURES</a>
+            <a href="#contact" onClick={() => setIsOpen(false)} className="text-gray-800 hover:text-blue-600 px-2 py-1">CONTACT</a>
             <a
               href="#purchase"
               onClick={() => setIsOpen(false)}
@@ -174,6 +120,9 @@ export default function Navbar() {
           </div>
         )}
       </nav>
+
+      {/* Spacer Element to prevent Hero layout jolt when navbar flips to fixed mode */}
+      {isFixed && <div className="h-[108px] w-full bg-transparent" />}
     </header>
   );
 }
