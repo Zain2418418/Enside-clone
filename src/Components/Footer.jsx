@@ -52,11 +52,11 @@ export default function Footer() {
             Useful Links
           </h3>
           <ul className="flex flex-col gap-y-3 text-[14px] text-gray-400/90 font-normal">
-            <li><a href="#" className="hover:text-white transition-colors">FAQ's</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Testimonials</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Tutorials</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
+            <li><a href="#about" className="hover:text-white transition-colors">FAQ's</a></li>
+            <li><a href="#cases" className="hover:text-white transition-colors">Documentation</a></li>
+            <li><a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
+            <li><a href="#cases" className="hover:text-white transition-colors">Tutorials</a></li>
+            <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
           </ul>
         </div>
 

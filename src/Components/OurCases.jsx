@@ -44,7 +44,7 @@ const CASES_DATA = [
 
 export default function OurCases() {
   return (
-    <section className="w-full bg-white py-24 text-center font-sans">
+    <section id="cases" className="w-full bg-white py-24 text-center font-sans">
       <div className="max-w-7xl mx-auto px-6 md:px-16">
         
         {/* Section Header */}

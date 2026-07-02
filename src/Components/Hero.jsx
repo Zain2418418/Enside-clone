@@ -56,7 +56,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-[75xvh] min-h-[480px] overflow-hidden bg-black font-sans">
+    <section id="about" className="relative w-full h-[75xvh] min-h-[480px] overflow-hidden bg-black font-sans">
       {/* Slide Container */}
       {SLIDES.map((slide, index) => {
         const isActive = index === current;

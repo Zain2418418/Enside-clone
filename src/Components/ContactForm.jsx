@@ -13,7 +13,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="w-full bg-white py-24 font-sans border-t border-gray-100">
+    <section id="contact" className="w-full bg-white py-24 font-sans border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
         
         {/* LEFT COLUMN: */}

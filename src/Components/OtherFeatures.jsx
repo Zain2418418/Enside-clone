@@ -48,7 +48,7 @@ const FEATURES_RIGHT = [
 
 export default function OtherFeatures() {
   return (
-    <section className="w-full bg-[#f9fbfd] py-24 text-center font-sans border-b border-gray-100">
+    <section id="features" className="w-full bg-[#f9fbfd] py-24 text-center font-sans border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 md:px-16">
         
         {/* Section Header */}

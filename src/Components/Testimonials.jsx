@@ -51,7 +51,7 @@ export default function Testimonials() {
   }, [isPaused]);
 
   return (
-    <section className="w-full bg-white py-24 text-center font-sans overflow-hidden">
+    <section id="testimonials" className="w-full bg-white py-24 text-center font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
